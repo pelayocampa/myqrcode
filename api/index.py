@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler
+from urllib import parse
 import json
 from random import randint
 
@@ -7,7 +8,7 @@ url = "https://raw.githubusercontent.com/reggi/fortune-cookie/master/fortune-coo
 class handler(BaseHTTPRequestHandler):
 
     def get_fortune_cookie():
-        file = open('fortune-cookie.json', 'r')
+        file = open("fortune-cookie.json", "r")
         data = json.loads(file)
         data_len = len(data)
         random_position = randint(0, data_len - 1)

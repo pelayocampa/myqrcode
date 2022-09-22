@@ -30,6 +30,6 @@ class handler(BaseHTTPRequestHandler):
         data_len = len(data)
         random_position = randint(0, data_len - 1)
 
-        message = "Test me: "+data[random_position]
+        message = "Test me: "
         self.wfile.write(message.encode())
         return

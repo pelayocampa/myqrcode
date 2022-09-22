@@ -16,14 +16,20 @@ class handler(BaseHTTPRequestHandler):
         random_position = randint(0, data_len - 1)
         return data[random_position]
 
-
     def do_GET(self):
         s = self.path
-        dic = dict(parse.parse_qsl(parse.urlsplit(s).query))
+        #dic = dict(parse.parse_qsl(parse.urlsplit(s).query))
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
 
-        message = "Test me: "+self.get_fortune_cookie()
+        with open('./fortune-cookie.json') as f:
+            readed_data = f.read()
+
+        data = json.loads(readed_data)
+        data_len = len(data)
+        random_position = randint(0, data_len - 1)
+
+        message = "Test me: "+data[random_position]
         self.wfile.write(message.encode())
         return

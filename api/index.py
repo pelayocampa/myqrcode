@@ -8,11 +8,12 @@ from random import randint
 class handler(BaseHTTPRequestHandler):
 
     def get_fortune_cookie():
-        file = open("fortune-cookie.txt", "r")
-        data = json.loads(file)
+        with open('fortune-cookie.json') as f:
+            readed_data = f.read()
+
+        data = json.loads(readed_data)
         data_len = len(data)
         random_position = randint(0, data_len - 1)
-        file.close()
         return data[random_position]
 
 

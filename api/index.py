@@ -24,5 +24,5 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
 
         message = self.get_fortune_cookie()
-        self.wfile.write(message)
+        self.wfile.write(message.encode('utf-8'))
         return

@@ -8,14 +8,14 @@ from random import randint
 
 class handler(BaseHTTPRequestHandler):
 
-    def get_fortune_cookie():
+    '''def get_fortune_cookie():
         with open('./fortune-cookie.json') as f:
             readed_data = f.read()
 
         data = json.loads(readed_data)
         data_len = len(data)
         random_position = randint(0, data_len - 1)
-        return data[random_position]
+        return data[random_position]'''
 
     def do_GET(self):
         self.send_response(200)

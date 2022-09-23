@@ -9,7 +9,7 @@ from os.path import join
 
 class handler(BaseHTTPRequestHandler):
 
-    def get_fortune_cookie():
+    def get_fortune_cookie(self):
         with open(join('data','fortune-cookie.json'),'r') as f:
             readed_data = f.read()
 

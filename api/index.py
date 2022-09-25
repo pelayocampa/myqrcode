@@ -3,10 +3,25 @@ from urllib import parse
 import json
 from random import randint
 from os.path import join
+from tinyhtml import html, h, frag, raw, Frag
 
 
 
 class handler(BaseHTTPRequestHandler):
+
+    def layout(title:str, message:str):
+        return html()(
+            h('head')(
+                h('title')(title),
+            ),
+            h('body')(
+                h('div')(body)
+            )
+        ).render()
+
+    def get_html_fortune(self):
+        message = self.get_html_fortune()
+        return self.layout('Be Happy', message)
 
     def get_fortune_cookie(self):
         with open(join('data','fortune-cookie.json'),'r') as f:

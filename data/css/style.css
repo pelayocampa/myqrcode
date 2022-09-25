@@ -1,5 +1,9 @@
 .centered {
     margin: 0, auto;
     width: 100%;
+    padding : 20px;
+    text-decoration:wavy;
+    font-size: 30pt;
+    font-family: "Helvetica Neue";
     text-align: center;
 }

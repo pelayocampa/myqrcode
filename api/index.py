@@ -9,18 +9,19 @@ from tinyhtml import html, h, frag, raw, Frag
 
 class handler(BaseHTTPRequestHandler):
 
-    def layout(title:str, message:str):
+    def layout(self,title:str, message:str):
         return html()(
             h('head')(
                 h('title')(title),
+                h('link',type='text/css',rel='stylesheet',href='../data/css/style.css')()
             ),
             h('body')(
-                h('div')(body)
+                h('div',klass='centered')(message)
             )
         ).render()
 
     def get_html_fortune(self):
-        message = self.get_html_fortune()
+        message = self.get_fortune_cookie()
         return self.layout('Be Happy', message)
 
     def get_fortune_cookie(self):
@@ -37,6 +38,6 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
 
-        message = self.get_fortune_cookie()
+        message = self.get_html_fortune()
         self.wfile.write(message.encode('utf-8'))
         return

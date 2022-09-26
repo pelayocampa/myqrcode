@@ -13,10 +13,15 @@ class handler(BaseHTTPRequestHandler):
         return html()(
             h('head')(
                 h('title')(title),
+                h('script',type='text/javascript',src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')(),
                 h('link',type='text/css',rel='stylesheet',href='../data/css/style.css')()
             ),
             h('body')(
-                h('div',klass='centered')(message)
+                h('div',klass='centered')(message),
+                h('div',id='ajax_loader')(),
+                h('script',type='text/javascript')(
+                    raw('$("#ajax_loader").load("https://stuffedeyes.files.wordpress.com/2018/06/spain-2906824_960_720.png?w=748")')
+                )
             )
         ).render()
 
